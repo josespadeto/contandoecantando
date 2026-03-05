@@ -31,104 +31,120 @@
             display: inline-block; padding-bottom: 10px;
         }
 
-        .container { width: 90%; max-width: 1200px; padding-bottom: 50px; }
+        .container { width: 95%; max-width: 1100px; padding-bottom: 50px; }
 
         .input-section {
             background: var(--card-bg);
-            padding: 35px; border-radius: 15px;
+            padding: 30px; border-radius: 15px;
             border: 2px solid var(--accent-gold);
-            margin-bottom: 40px; box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 35px; box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
         }
 
         textarea {
             width: 100%; background: #fff; border: 1px solid #ccc;
             color: #333; padding: 18px; border-radius: 8px;
-            font-size: 1.1rem; margin-bottom: 20px; box-sizing: border-box;
+            font-size: 1.1rem; margin-bottom: 15px; box-sizing: border-box;
+            outline-color: var(--accent-green);
         }
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .tool-card {
             background: var(--card-bg);
-            padding: 25px; border-radius: 12px;
+            padding: 20px; border-radius: 12px;
             border: 1px solid #ddd; transition: 0.3s;
             display: flex; flex-direction: column; justify-content: space-between;
         }
 
-        .tool-card:hover { transform: scale(1.02); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-        .tool-card h3 { margin-top: 0; color: var(--accent-blue); }
+        .tool-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
+        .tool-card h3 { margin-top: 0; color: var(--accent-blue); font-size: 1.2rem; }
+        .tool-card p { font-size: 0.9rem; color: #666; line-height: 1.4; }
 
         .copy-btn {
             background: var(--accent-green); color: white;
-            border: none; padding: 12px; border-radius: 5px;
+            border: none; padding: 12px; border-radius: 6px;
             cursor: pointer; font-weight: bold; width: 100%;
-            transition: 0.3s;
+            transition: 0.3s; text-transform: uppercase; font-size: 0.8rem;
         }
         .copy-btn:hover { background: var(--accent-gold); }
 
-        footer { padding: 40px; color: #777; font-style: italic; }
+        footer { padding: 40px; color: #888; font-size: 0.8rem; text-align: center; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Contando e Cantando</h1>
-        <p>Curadoria de MPB e Efemérides Musicais</p>
+        <p>Curadoria de MPB Moderna e Dinâmica</p>
     </header>
 
     <div class="container">
         <div class="input-section">
-            <textarea id="userInput" rows="2" placeholder="Digite a data de hoje (ex: 5 de Março) ou o nome de um artista da MPB..."></textarea>
-            <p style="text-align: center; color: #666;">Gere conteúdos diários sobre a história da nossa música</p>
+            <textarea id="userInput" rows="2" placeholder="Digite a data ou o artista (ex: Elis Regina)..."></textarea>
+            <p style="text-align: center; font-size: 0.9rem; color: var(--accent-gold);">Crie vídeos que prendem a atenção com textos cinéticos</p>
         </div>
 
         <div class="tools-grid">
             <div class="tool-card">
                 <h3>🔍 Oráculo MPB</h3>
-                <p>Descubra nascimentos, falecimentos e marcos históricos da data inserida.</p>
-                <button class="copy-btn" onclick="copyPrompt('oraculo')">Pesquisar Efeméride</button>
+                <p>Busca fatos, nascimentos e curiosidades marcantes da data ou do artista.</p>
+                <button class="copy-btn" onclick="copyPrompt('oraculo')">Pesquisar História</button>
+            </div>
+
+            <div class="tool-card" style="border-top: 4px solid var(--accent-blue);">
+                <h3>🎬 Reels Moderno</h3>
+                <p>Roteiro com frases curtas e dinâmicas para o texto "correr" na tela com a música.</p>
+                <button class="copy-btn" onclick="copyPrompt('reels')">Gerar Roteiro Dinâmico</button>
             </div>
 
             <div class="tool-card">
-                <h3>✍️ Storytelling Instagram</h3>
-                <p>Cria legendas elegantes e poéticas para posts sobre o artista do dia.</p>
-                <button class="copy-btn" onclick="copyPrompt('legenda')">Gerar Legenda</button>
+                <h3>✍️ Legenda Poética</h3>
+                <p>Texto elegante para a descrição do post, focado em legado e emoção.</p>
+                <button class="copy-btn" onclick="copyPrompt('legenda')">Copiar Legenda</button>
             </div>
 
             <div class="tool-card">
-                <h3>🎬 Roteiro Reels</h3>
-                <p>Roteiro focado na apresentação da Rosane Maia, mesclando história e música.</p>
-                <button class="copy-btn" onclick="copyPrompt('roteiro')">Gerar Roteiro</button>
-            </div>
-
-            <div class="tool-card">
-                <h3>🎵 Top 5 Músicas</h3>
-                <p>Sugestão das obras essenciais e o contexto de cada uma para usar como trilha.</p>
-                <button class="copy-btn" onclick="copyPrompt('musica')">Ver Playlist</button>
+                <h3>🎵 Trilha & Drop</h3>
+                <p>Identifica as músicas e o momento exato para o volume subir no vídeo.</p>
+                <button class="copy-btn" onclick="copyPrompt('musica')">Sugerir Trilha</button>
             </div>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 Contando e Cantando com Rosane Maia | Dr. Jose Spadeto
+        &copy; 2026 Contando e Cantando com Rosane Maia | Produção de Conteúdo Cultural
     </footer>
 
     <script>
         function copyPrompt(type) {
-            const input = document.getElementById('userInput').value || "5 de Março";
+            const input = document.getElementById('userInput').value || "hoje";
             let text = "";
             
-            if(type === 'oraculo') text = `Atue como historiador da MPB. Para a data ou artista '${input}', identifique quem nasceu ou partiu e os marcos históricos. Traga 3 curiosidades que emocionem o público.`;
-            if(type === 'legenda') text = `Crie uma legenda para Instagram sobre '${input}'. O tom deve ser saudosista, elegante e informativo. Use emojis musicais e hashtags como #MPB #ContandoECantando.`;
-            if(type === 'roteiro') text = `Escreva um roteiro de 60 segundos para a Rosane Maia apresentar um Reels. Comece com 'Você sabia que nesta data...' sobre '${input}'. O roteiro deve ser fluido e convidar o seguidor a ouvir a música citada.`;
-            if(type === 'musica') text = `Liste as 5 músicas mais emblemáticas relacionadas a '${input}', explicando o contexto histórico de composição para ser usado como curiosidade no post.`;
+            if(type === 'oraculo') {
+                text = `Atue como historiador da MPB. Para '${input}', identifique fatos marcantes e curiosidades raras. Traga elementos que gerem conexão emocional imediata.`;
+            }
+            
+            if(type === 'reels') {
+                text = `Crie um roteiro de Reels moderno e dinâmico para a Rosane Maia sobre '${input}'. 
+                1. GANCHO (0-3s): Uma frase curta e intrigante no centro da tela. 
+                2. TEXTO CINÉTICO: Divida a história em 5 frases curtas (máximo 7 palavras cada) para aparecerem uma por uma seguindo o ritmo. 
+                3. ROTEIRO ROSANE: Instruções de como ela deve apresentar, focando em elegância e fluidez. Evite blocos de texto grandes na tela.`;
+            }
+
+            if(type === 'legenda') {
+                text = `Escreva uma legenda poética e sofisticada para Instagram sobre '${input}'. Use uma linguagem de crônica musical. Inclua hashtags estratégicas como #MPB #ContandoECantando #MusicaBrasileira.`;
+            }
+
+            if(type === 'musica') {
+                text = `Sugira as 3 melhores músicas de '${input}' para Reels. Indique o minuto/segundo exato onde a música fica mais emocionante (o drop) para sincronizar com o texto.`;
+            }
             
             navigator.clipboard.writeText(text);
-            alert("Prompt Musical copiado com sucesso!");
+            alert("Prompt Musical atualizado e copiado!");
         }
     </script>
 </body>
