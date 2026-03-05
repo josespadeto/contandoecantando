@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub MPB | Contando e Cantando</title>
+    <style>
+        :root {
+            --bg-color: #fdf6e3; 
+            --card-bg: #ffffff;
+            --accent-gold: #b8860b;
+            --accent-green: #2d5a27; 
+            --accent-blue: #1a3a5f;
+            --text-main: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh;
+        }
+
+        header { padding: 50px 20px; text-align: center; }
+        header h1 {
+            font-size: 2.8rem; margin-bottom: 10px;
+            color: var(--accent-green);
+            border-bottom: 3px solid var(--accent-gold);
+            display: inline-block; padding-bottom: 10px;
+        }
+
+        .container { width: 90%; max-width: 1200px; padding-bottom: 50px; }
+
+        .input-section {
+            background: var(--card-bg);
+            padding: 35px; border-radius: 15px;
+            border: 2px solid var(--accent-gold);
+            margin-bottom: 40px; box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 100%; background: #fff; border: 1px solid #ccc;
+            color: #333; padding: 18px; border-radius: 8px;
+            font-size: 1.1rem; margin-bottom: 20px; box-sizing: border-box;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            padding: 25px; border-radius: 12px;
+            border: 1px solid #ddd; transition: 0.3s;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+
+        .tool-card:hover { transform: scale(1.02); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .tool-card h3 { margin-top: 0; color: var(--accent-blue); }
+
+        .copy-btn {
+            background: var(--accent-green); color: white;
+            border: none; padding: 12px; border-radius: 5px;
+            cursor: pointer; font-weight: bold; width: 100%;
+            transition: 0.3s;
+        }
+        .copy-btn:hover { background: var(--accent-gold); }
+
+        footer { padding: 40px; color: #777; font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Contando e Cantando</h1>
+        <p>Curadoria de MPB e Efemérides Musicais</p>
+    </header>
+
+    <div class="container">
+        <div class="input-section">
+            <textarea id="userInput" rows="2" placeholder="Digite a data de hoje (ex: 5 de Março) ou o nome de um artista da MPB..."></textarea>
+            <p style="text-align: center; color: #666;">Gere conteúdos diários sobre a história da nossa música</p>
+        </div>
+
+        <div class="tools-grid">
+            <div class="tool-card">
+                <h3>🔍 Oráculo MPB</h3>
+                <p>Descubra nascimentos, falecimentos e marcos históricos da data inserida.</p>
+                <button class="copy-btn" onclick="copyPrompt('oraculo')">Pesquisar Efeméride</button>
+            </div>
+
+            <div class="tool-card">
+                <h3>✍️ Storytelling Instagram</h3>
+                <p>Cria legendas elegantes e poéticas para posts sobre o artista do dia.</p>
+                <button class="copy-btn" onclick="copyPrompt('legenda')">Gerar Legenda</button>
+            </div>
+
+            <div class="tool-card">
+                <h3>🎬 Roteiro Reels</h3>
+                <p>Roteiro focado na apresentação da Rosane Maia, mesclando história e música.</p>
+                <button class="copy-btn" onclick="copyPrompt('roteiro')">Gerar Roteiro</button>
+            </div>
+
+            <div class="tool-card">
+                <h3>🎵 Top 5 Músicas</h3>
+                <p>Sugestão das obras essenciais e o contexto de cada uma para usar como trilha.</p>
+                <button class="copy-btn" onclick="copyPrompt('musica')">Ver Playlist</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Contando e Cantando com Rosane Maia | Dr. Jose Spadeto
+    </footer>
+
+    <script>
+        function copyPrompt(type) {
+            const input = document.getElementById('userInput').value || "5 de Março";
+            let text = "";
+            
+            if(type === 'oraculo') text = `Atue como historiador da MPB. Para a data ou artista '${input}', identifique quem nasceu ou partiu e os marcos históricos. Traga 3 curiosidades que emocionem o público.`;
+            if(type === 'legenda') text = `Crie uma legenda para Instagram sobre '${input}'. O tom deve ser saudosista, elegante e informativo. Use emojis musicais e hashtags como #MPB #ContandoECantando.`;
+            if(type === 'roteiro') text = `Escreva um roteiro de 60 segundos para a Rosane Maia apresentar um Reels. Comece com 'Você sabia que nesta data...' sobre '${input}'. O roteiro deve ser fluido e convidar o seguidor a ouvir a música citada.`;
+            if(type === 'musica') text = `Liste as 5 músicas mais emblemáticas relacionadas a '${input}', explicando o contexto histórico de composição para ser usado como curiosidade no post.`;
+            
+            navigator.clipboard.writeText(text);
+            alert("Prompt Musical copiado com sucesso!");
+        }
+    </script>
+</body>
+</html>
